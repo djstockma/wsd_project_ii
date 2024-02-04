@@ -1,0 +1,18 @@
+<% layout("./layouts/layout.eta") %>
+
+<h1>WSD project II: quiz webapp </h1>
+
+<p> This is a webapp for practicing questions. It allows adding question topics, adding questions to said topics, 
+adding answer options to these questions, and practicing on the questions. The webapp also has an API for 
+requesting random questions and answering them.
+</p>
+<a href="/auth/register/">Registration</a> <br>
+<a href="/auth/login">Login</a> <br>
+<a href="/topics/">To topics!</a>
+
+<h2> Statistics </h2>
+<ul>
+    <li>Topics: <%= it.nOfTopics %> </li>
+    <li>Questions: <%= it.nOfQuestions %></li>
+    <li>Answers: <%= it.nOfAnswers %></li>
+</ul>

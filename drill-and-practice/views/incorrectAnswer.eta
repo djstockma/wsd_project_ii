@@ -1,0 +1,6 @@
+<% layout("./layouts/layout.eta") %>
+
+<h2> Incorrect! </h2>
+<p>The correct answer was: <%= it.correctAnswer %></p>
+
+<a href="/quiz/<%= it.tId %>">Next question</a>

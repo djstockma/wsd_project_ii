@@ -1,0 +1,27 @@
+<% layout("./layouts/layout.eta") %>
+
+<h1>Topic: <%= it.name %></h1>
+
+<h2>Questions:</h2>
+<ul>
+<% it.questions.forEach((question) => { %>  
+    <li>
+        <a href="/topics/<%= it.id %>/questions/<%= question.id %>"><%= question.question_text %></a>    
+    </li>
+<% });%>  
+</ul>
+
+<form method="POST" action="/topics/<%= it.id %>/questions">
+    Add a question:
+    <input type="textarea" name="question_text" value="<%= it.text %>" data-testid="question_text" />
+    <input type="submit" name="submit" value="Add question" data-testid="submit_question" />
+    <br/>
+    <% if(it.errors && it.errors.length > 0) {%>
+        <h2>Errors:</h2>
+        <ul>
+            <% it.errors.forEach((error) => {%>
+                <li> <%= error %> </li>
+            <% }); %>
+        </ul>
+    <% } %>
+</form>
