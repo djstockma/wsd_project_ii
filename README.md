@@ -30,7 +30,7 @@ docker compose run --entrypoint=npx e2e-playwright playwright test && docker com
 Observe! To get the tests to work smoothly, I found it easiest to first do docker compose down and docker compose up, to make sure that a) the database is empty and b) the service is up and running when the tests start, making sure there are no errors caused by this.
 
 ## Online deployment
-This web service is deployed online at ADD LINK HERE . The service name is wsd-project1, and it is deployed using render. It utilizes a connection pool to a render-hosted postgres database, and environment variables to keep db credentials safe.
+This web service is deployed online at https://wsd-project2-vbzj.onrender.com/ . The service name is wsd-project1, and it is deployed using render. It utilizes a connection pool to a render-hosted postgres database, and environment variables to keep db credentials safe.
 
 Notice that the free tier subscription on render causes the service to sometimes respond quite slowly. 
 

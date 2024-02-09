@@ -17,6 +17,7 @@ const processLogin = async ({ request, response, state, render }) => {
     data.errors.push("No such user found");
   }
   const user = userFromDatabase[0];
+
   var passwordMatches = false
   if(data.errors.length < 1) {
     passwordMatches = await bcrypt.compare(

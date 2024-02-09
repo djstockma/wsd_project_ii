@@ -3,10 +3,10 @@ import * as questionService from "../../services/questionService.js";
 import * as answerService from "../../services/answerService.js";
 import * as optionService from "../../services/optionService.js";
 
-const showTopics = async({request, response, render}) => {
+const showTopics = async({render, user}) => {
     const data = {
         topics: await topicService.getAllTopicsSorted(),
-        admin: true, //TODO: fix admin login
+        admin: user.admin,
     };
     render("topics.eta", data);
 };
@@ -30,13 +30,14 @@ const addTopic = async({request, response}) => {
     const name = requestParams.get("name");
     await topicService.addTopic(1, name);
     response.redirect("/topics");
-    // TODO: this needs validation! 
 };
 
-const deleteTopic = async({request, response, params}) => {
-    // TODO: This needs auth - only admins. This needs to be verified on server!
+const deleteTopic = async({request, response, params, user}) => {
     const tId = params.id;
     const questions = await questionService.getQuestionsByTopic(tId);
+    if(!user.admin) {
+        response.redirect("/topics");
+    }
     // First we delete answers and answer options
     questions.forEach(async question => {
         await answerService.deleteAnswersByQuestion(question.id);

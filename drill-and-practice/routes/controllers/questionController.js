@@ -27,7 +27,6 @@ const addQuestion = async({request, response, params, render}) => {
         data.text = text;
         render("topic.eta", data);
     }
-    //TODO: make sure topic gets current user!
 };
 
 const deleteQuestion = async({response, params}) => {
@@ -35,7 +34,6 @@ const deleteQuestion = async({response, params}) => {
     const qId = params.qId;
     await questionService.deleteQuestion(qId);
     response.redirect(`/topics/${tId}`);
-    //TODO: maybe check on server that said question is really empty?
 };
 
 const showQuestion = async({params, render}) => { 
@@ -90,8 +88,5 @@ const deleteAnswerOption = async({request, response, params}) => {
     await optionService.deleteOption(oId);
     response.redirect(`/topics/${tId}/questions/${qId}`);
 };
-
-
-
 
 export {  addQuestion, showQuestion, addAnswerOption, deleteAnswerOption, deleteQuestion };
